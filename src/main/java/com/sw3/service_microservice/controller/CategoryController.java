@@ -20,7 +20,6 @@ import java.util.List;
  * Todos los endpoints están bajo la ruta base {@code /api/categories}.
  */
 @RestController
-@RequestMapping("/api/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
@@ -37,7 +36,7 @@ public class CategoryController {
      * @param request DTO que contiene el nombre de la categoría a crear.
      * @return Un {@link ResponseEntity} con el DTO de la categoría creada y el estado HTTP 201 Created.
      */
-    @PostMapping
+    @PostMapping("/admin/categories")
     public ResponseEntity<CategoryResponseDTO> create(@Valid @RequestBody CreateCategoryRequestDTO request) {
         CategoryResponseDTO response = categoryAccess.createCategory(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -52,7 +51,7 @@ public class CategoryController {
      *
      * @return Un {@link ResponseEntity} que contiene una lista de DTOs de categorías y el estado HTTP 200 OK.
      */
-    @GetMapping
+    @GetMapping("/public/categories")
     public ResponseEntity<List<CategoryResponseDTO>> getAll() {
         return ResponseEntity.ok(categoryAccess.getAllCategories());
     }

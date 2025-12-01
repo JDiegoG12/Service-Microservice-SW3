@@ -99,5 +99,5 @@ public interface IServiceAccess {
      * @param id ID del servicio.
      * @return Lista de IDs (Long) de los barberos asociados actualmente.
      */
-    List<Long> getBarbersByServiceId(Long id);
+    List<String> getBarbersByServiceId(Long id);
 }

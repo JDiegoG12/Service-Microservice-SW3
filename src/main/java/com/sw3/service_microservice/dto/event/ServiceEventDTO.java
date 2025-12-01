@@ -60,7 +60,7 @@ public class ServiceEventDTO {
      * debe crear o eliminar para mantenerse consistente.
      * </p>
      */
-    private List<Long> barberIds; 
+    private List<String> barberIds; 
 
     /**
      * Representación en formato String del estado de disponibilidad comercial del servicio

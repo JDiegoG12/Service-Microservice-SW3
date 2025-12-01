@@ -23,7 +23,6 @@ import java.util.List;
  * Todos los endpoints están bajo la ruta base {@code /api/services}.
  */
 @RestController
-@RequestMapping("/api/services")
 @RequiredArgsConstructor
 public class ServiceController {
 
@@ -38,7 +37,7 @@ public class ServiceController {
      * @param request El DTO con los datos del servicio a crear.
      * @return Un {@link ResponseEntity} con el DTO del servicio creado y el estado HTTP 201 Created.
      */
-    @PostMapping
+    @PostMapping("/admin/services")
     public ResponseEntity<ServiceResponseDTO> create(@Valid @RequestBody CreateServiceRequestDTO request) {
         ServiceResponseDTO response = serviceAccess.createService(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -51,7 +50,7 @@ public class ServiceController {
      * @param request El DTO con los nuevos datos del servicio.
      * @return Un {@link ResponseEntity} con el DTO del servicio actualizado y el estado HTTP 200 OK.
      */
-    @PutMapping("/{id}")
+    @PutMapping("/admin/services/{id}")
     public ResponseEntity<ServiceResponseDTO> update(@PathVariable Long id, 
                                                      @Valid @RequestBody UpdateServiceRequestDTO request) {
         ServiceResponseDTO response = serviceAccess.updateService(id, request);
@@ -65,7 +64,7 @@ public class ServiceController {
      * @param request El DTO que contiene la lista de IDs de barberos.
      * @return Un {@link ResponseEntity} con el DTO del servicio actualizado (posiblemente con nuevo estado) y el estado HTTP 200 OK.
      */
-    @PutMapping("/{id}/barbers")
+    @PutMapping("/admin/services/{id}/barbers")
     public ResponseEntity<ServiceResponseDTO> assignBarbers(@PathVariable Long id, 
                                                             @Valid @RequestBody AssignBarbersRequestDTO request) {
         ServiceResponseDTO response = serviceAccess.assignBarbers(id, request);
@@ -79,7 +78,7 @@ public class ServiceController {
      * @param includeInactive Parámetro de consulta opcional. Si es {@code true}, incluye también los servicios inactivos.
      * @return Un {@link ResponseEntity} con la lista de DTOs de servicios y el estado HTTP 200 OK.
      */
-    @GetMapping
+    @GetMapping("/public/services")
     public ResponseEntity<List<ServiceResponseDTO>> getAll(
             @RequestParam(required = false, defaultValue = "false") boolean includeInactive
     ) {
@@ -92,7 +91,7 @@ public class ServiceController {
      * @param id El identificador único del servicio.
      * @return Un {@link ResponseEntity} con el DTO del servicio encontrado y el estado HTTP 200 OK.
      */
-    @GetMapping("/{id}")
+    @GetMapping("/public/services/{id}")
     public ResponseEntity<ServiceResponseDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(serviceAccess.getServiceById(id));
     }
@@ -103,8 +102,8 @@ public class ServiceController {
      * @param id El identificador único del servicio.
      * @return Un {@link ResponseEntity} con una lista de Longs (IDs de barberos) y el estado HTTP 200 OK.
      */
-     @GetMapping("/{id}/barbers")
-    public ResponseEntity<List<Long>> getBarbersByService(@PathVariable Long id) {
+     @GetMapping("/public/services/{id}/barbers")
+    public ResponseEntity<List<String>> getBarbersByService(@PathVariable Long id) {
         return ResponseEntity.ok(serviceAccess.getBarbersByServiceId(id));
     }
 
@@ -114,7 +113,7 @@ public class ServiceController {
      * @param id El identificador único del servicio a inactivar.
      * @return Un {@link ResponseEntity} con el cuerpo vacío y el estado HTTP 204 No Content, indicando éxito.
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/services/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         serviceAccess.deleteService(id);
         return ResponseEntity.noContent().build();

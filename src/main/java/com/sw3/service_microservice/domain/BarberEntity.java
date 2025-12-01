@@ -38,7 +38,7 @@ public class BarberEntity {
      * </p>
      */
     @Id
-    private Long id;
+    private String id;
 
     /**
      * Nombre completo del barbero.

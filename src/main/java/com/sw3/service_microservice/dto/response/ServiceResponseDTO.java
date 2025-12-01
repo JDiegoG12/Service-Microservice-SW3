@@ -14,7 +14,7 @@ public class ServiceResponseDTO {
     private BigDecimal price;
     private Integer duration;
     private Long categoryId; // Solo el ID, como pide el front
-    private List<Long> barberIds; // Lista de IDs de los barberos
+    private List<String> barberIds; // Lista de IDs de los barberos
     private String availabilityStatus; // "Disponible" | "No Disponible"
     private String systemStatus;       // "Activo" | "Inactivo"
 }

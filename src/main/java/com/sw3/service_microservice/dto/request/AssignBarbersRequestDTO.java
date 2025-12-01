@@ -35,5 +35,5 @@ public class AssignBarbersRequestDTO {
      * </p>
      */
     @NotNull(message = "La lista de barberos no puede ser nula")
-    private List<Long> barberIds;
+    private List<String> barberIds;
 }

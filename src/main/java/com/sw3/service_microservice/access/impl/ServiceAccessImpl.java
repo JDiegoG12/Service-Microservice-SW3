@@ -150,7 +150,7 @@ public class ServiceAccessImpl implements IServiceAccess {
                 .orElseThrow(() -> new EntidadNoExisteException("Servicio no encontrado con ID: " + serviceId));
 
         // Obtener lista de IDs solicitados
-        List<Long> barberIds = request.getBarberIds();
+        List<String> barberIds = request.getBarberIds();
 
         // Buscar los barberos en BD
         List<BarberEntity> barberEntities = barberRepository.findAllById(barberIds);
@@ -347,7 +347,7 @@ public class ServiceAccessImpl implements IServiceAccess {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Long> getBarbersByServiceId(Long id) {
+    public List<String> getBarbersByServiceId(Long id) {
         // 1. Buscar el servicio
         ServiceEntity service = serviceRepository.findById(id)
                 .orElseThrow(() -> new EntidadNoExisteException("Servicio no encontrado con ID: " + id));

@@ -27,7 +27,7 @@ public class BarberEventDTO {
     /**
      * Identificador único del barbero, originado en el microservicio de Barberos.
      */
-    private Long id;
+    private String id;
 
     /**
      * Nombre completo del barbero.

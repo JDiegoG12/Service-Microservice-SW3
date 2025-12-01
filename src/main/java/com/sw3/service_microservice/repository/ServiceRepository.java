@@ -23,5 +23,5 @@ public interface ServiceRepository extends JpaRepository<ServiceEntity, Long> {
     //Buscar la entidad completa por nombre (para la lógica de reactivación)
     Optional<ServiceEntity> findByNameIgnoreCase(String name);
 
-    List<ServiceEntity> findByBarbers_Id(Long barberId);
+    List<ServiceEntity> findByBarbers_Id(String barberId);
 }
