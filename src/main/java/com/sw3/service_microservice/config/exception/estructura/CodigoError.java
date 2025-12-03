@@ -40,7 +40,7 @@ public enum CodigoError {
      * Violación de una regla de negocio específica del dominio.
      * Ej: Intentar borrar un servicio con reservas futuras. Asociado a HTTP 400.
      */
-    VIOLACION_REGLA_DE_NEGOCIO("GC-0004", "Regla de negocio violada"),
+    VIOLACION_REGLA_DE_NEGOCIO("GC-0004", ""),
 
     /**
      * Fallo de autenticación.
