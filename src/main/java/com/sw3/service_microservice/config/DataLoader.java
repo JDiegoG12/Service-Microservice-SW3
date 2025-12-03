@@ -1,21 +1,16 @@
 package com.sw3.service_microservice.config;
 
 import com.sw3.service_microservice.access.event.ServiceEventPublisher;
-import com.sw3.service_microservice.domain.CategoryEntity;
-import com.sw3.service_microservice.domain.ReservationEntity; 
+import com.sw3.service_microservice.domain.CategoryEntity; 
 import com.sw3.service_microservice.domain.ServiceEntity;
-import com.sw3.service_microservice.domain.enums.ReservationStatus;
 import com.sw3.service_microservice.dto.response.ServiceResponseDTO;
 import com.sw3.service_microservice.mapper.ServiceMapper;
 import com.sw3.service_microservice.repository.CategoryRepository;
-import com.sw3.service_microservice.repository.ReservationRepository;
 import com.sw3.service_microservice.repository.ServiceRepository; 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +20,6 @@ public class DataLoader implements CommandLineRunner {
 
     private final CategoryRepository categoryRepository;
     private final ServiceRepository serviceRepository;     
-    private final ReservationRepository reservationRepository;
     private final ServiceEventPublisher serviceEventPublisher;
     private final ServiceMapper serviceMapper;
 
