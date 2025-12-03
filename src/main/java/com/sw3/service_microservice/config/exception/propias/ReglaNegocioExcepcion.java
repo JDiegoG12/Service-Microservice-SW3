@@ -17,6 +17,6 @@ public class ReglaNegocioExcepcion extends RuntimeException {
     
     // Método helper para formatear el mensaje en el handler
     public String formatException() {
-        return String.format("%s - %s", llaveMensaje, getMessage());
+        return String.format("%s  %s", llaveMensaje, getMessage());
     }
 }
